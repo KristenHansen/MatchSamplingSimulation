@@ -1,0 +1,77 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Environment variables and configuration files
+.env
+*.env
+*.ini
+*.cfg
+
+# Virtual environment directories
+venv/
+.env/
+env/
+ENV/
+
+# Build directories
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and debugging
+*.log
+*.sqlite3
+*.db
+
+# Testing
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+*.cover
+htmlcov/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyInstaller
+*.spec
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Cython
+cython_debug/
+
+# Docker files
+*.pid
+
+# Temporary files
+*.temp
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+.DS_Store
+
+# Cache directories and files
+.cache/
+*.mo
+*.pot
+
+# Security
+secrets.json
+
