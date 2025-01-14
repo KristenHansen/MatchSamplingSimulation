@@ -1,10 +1,10 @@
 import pgmpy
 from pgmpy.base import DAG
-from pgmpy.models import BayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
+from pgmpy.models import BayesianNetwork
 
 
-def create_twin_error_graph():
+def create_twin_error_graph() -> list:
     """
     Creates the twin-error graph model for a conditionally ignorable model with errors.
     The errors are nondifferential, and structured such that whenever one occurs, the treatment A
@@ -101,7 +101,7 @@ def create_statins_stroke_cpds(confounding_strength):
     return cpds
 
 
-def create_twin_error_model(graph: DAG, cpds: dict, error_rate: float):
+def create_twin_error_model(graph: list, cpds: dict, error_rate: float):
     """
     Creates the twin-error model over binary variables. Only CPDs relevant to the conditionally ignorable model need to be
     supplied.
@@ -135,6 +135,8 @@ def create_twin_error_model(graph: DAG, cpds: dict, error_rate: float):
         evidence_card=[2, 2],
     )
 
+
+    # error_rate = p(E = 1)
     cpd_e = TabularCPD(
         variable="E", variable_card=2, values=[[1 - error_rate], [error_rate]]
     )
