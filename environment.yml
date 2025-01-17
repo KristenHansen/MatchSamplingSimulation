@@ -27,3 +27,4 @@ dependencies:
       - pandas==2.2.3
       - pgmpy==0.1.26
       - pytest
+      - statsmodels
