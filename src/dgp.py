@@ -38,10 +38,12 @@ def create_twin_error_graph() -> list:
     return edges
 
 
-def create_statins_stroke_cpds(confounding_strength):
+def create_statins_stroke_cpds(confounding_strength, pC=0.5, po_Y_1=0.024, po_Y_0=0.03, pA1_C0 = .2, pA1_C1 =.3):
     """
     Creates simulation parameters based on the effect of statins on the reduction of ischemic stroke
     risk in Type 2 diabetes (https://pubmed.ncbi.nlm.nih.gov/20979581/)
+
+    Default parameters are calibrated based on results from Table 2 of above paper.
 
     A: statin usage
     Y: stroke status
@@ -53,17 +55,34 @@ def create_statins_stroke_cpds(confounding_strength):
 
     Confounding is introduced in the simulation by adjusting the strength of the confounding
     parameter.
+
+
+    Parameters
+    ----------
+    confounding_strength : 
+        
+    pC : float
+        
+    po_Y_1 : float
+        p(Y(a=1) = 1)
+
+    po_Y_0 : float
+        p(Y(a=0) = 1)
+
+    pA1_C0 : float
+        p(A = 1 | C = 0)
+        
+    pA1_C1 : float
+        p(A = 1 | C = 1)
+        
+
+    Returns
+    -------
+    
+        
+
     """
 
-    # Parameters derived from table 2
-    # Note that this results in an OR of 0.8
-    po_Y_1 = 0.024  # p(Y(a=1) = 1)
-    po_Y_0 = 0.03  # p(Y(a=0) = 1)
-    pC = 0.5  # p(C = 0)
-
-    # Create p(A | C), which can be arbitrary since this does not contribute to the causal effect
-    pA1_C0 = 0.2
-    pA1_C1 = 0.3
 
     # Create p(Y | A, C) based on a deviation from the population potential outcomes and the
     # confounding strength
@@ -179,3 +198,6 @@ def create_twin_error_model(graph: list, cpds: dict, error_rate: float):
     model.add_cpds(*list(all_cpds.values()))
 
     return model
+
+
+
